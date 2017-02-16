@@ -1,41 +1,99 @@
 !<!DOCTYPE html>
-<html lang="fr" ng-app="studentApp">
+<html lang="fr" ng-app="allLists">
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="/vendor/tacit-0.6.1.min.css" />
-	<link rel="stylesheet" href="/stylesheets/base.css" />
-	<title>Liste apprenants</title>
+
+	<link rel="stylesheet" type="text/css" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/style.css">
+
+	<script src="/node_modules/angular/angular.js"></script>
+	<script src="/node_modules/angular-animate/angular-animate.js"></script>
+
+	<title>Wine Seeker</title>
 </head>
 <body>
 
-	<student-averages 
-	average="average" 
-	percent-men="percentMen"
-	percent-women="percentWomen"
-	longest="longest">
-</student-averages>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Wine Seeker</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#">Dashboard</a></li>
+					<li><a href="#">Settings</a></li>
+					<li><a href="#">Profile</a></li>
+					<li><a href="#">Help</a></li>
+				</ul>
+				<form class="navbar-form navbar-right">
+					<input type="text" class="form-control" placeholder="Search...">
+				</form>
+			</div>
+		</div>
+	</nav>
 
-<student-list
-average="average" 
-percent-men="percentMen"
-percent-women="percentWomen"
-longest="longest"></student-list>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar">
+				<ul class="nav nav-sidebar">
+					<li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+					<li><a href="#">Reports</a></li>
+					<li><a href="#">Analytics</a></li>
+					<li><a href="#">Export</a></li>
+				</ul>
+				<ul class="nav nav-sidebar">
+					<li><a href="">Nav item</a></li>
+					<li><a href="">Nav item again</a></li>
+					<li><a href="">One more nav</a></li>
+					<li><a href="">Another nav item</a></li>
+					<li><a href="">More navigation</a></li>
+				</ul>
+				<ul class="nav nav-sidebar">
+					<li><a href="">Nav item again</a></li>
+					<li><a href="">One more nav</a></li>
+					<li><a href="">Another nav item</a></li>
+				</ul>
+			</div>
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<h1 class="page-header">Wines</h1>
+
+				<div class="row placeholders">
+
+					<div class="row">
+						<div class="col-xs-6 col-sm-3">
+							<div class="thumbnail">
+								<img src="..." alt="...">
+								<div class="caption">
+									<h3>Thumbnail label</h3>
+									<p>...</p>
+									<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
 
-<script src="/node_modules/angular/angular.js"></script>
-<script src="/node_modules/angular-animate/angular-animate.js"></script>
-<!-- App models -->
-<script type="text/javascript" src="/app/models/student.js"></script>
-<script type="text/javascript" src="/app/collections/students.js"></script>
+		<script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
+		<!-- App models -->
+		<script type="text/javascript" src="/app/models/student.js"></script>
+		<script type="text/javascript" src="/app/collections/students.js"></script>
 
-
-<!-- angular -->
-<script src="/app/studentApp.js"></script>
-<script src="/app/components/studentList/studentListModule.js"></script>
-<script src="/app/components/studentList/studentListController.js"></script>
-<script src="/app/components/studentList/studentListComponent.js"></script>
-<script src="/app/components/studentList/studentAveragesComponent.js"></script>
-</body>
-</html>
+		<!-- angular -->
+		<script src="/app/studentApp.js"></script>
+		<script src="/app/components/studentList/studentListModule.js"></script>
+		<script src="/app/components/studentList/studentListController.js"></script>
+		<script src="/app/components/studentList/studentListComponent.js"></script>
+		<script src="/app/components/studentList/studentAveragesComponent.js"></script>
+	</body>
+	</html>
 
