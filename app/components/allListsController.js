@@ -2,31 +2,37 @@ angular.module("allLists").controller("allListsController", ["$http", "$scope", 
   let WinesCollection;
   let OwnersCollection;
   let MarketsCollection;
-  /*this.orderProp = 'id'*/
+  
 
 
 
 
   $http.get("http://wine.wildcodeschool.fr/api/v1/wines").then((response) => {
     WinesCollection = new Wines(response.data)
-    this.wines = WinesCollection;
-    console.log("c'est ok");
+    this.wines = WinesCollection.data;
+
   })
 
   $http.get("http://wine.wildcodeschool.fr/api/v1/owners").then((response) => {
     OwnersCollection = new Owners(response.data)
     this.owners = OwnersCollection;
-    console.log("c'est ok");
+    console.log(OwnersCollection);
   })
 
   $http.get("http://wine.wildcodeschool.fr/api/v1/markets").then((response) => {
     MarketsCollection = new Markets(response.data)
     this.markets = MarketsCollection;
-    console.log("c'est ok");
+    console.log(MarketsCollection);
   })
 
 
   
+
+  this.monClick = ()=>{
+    console.log(this.wines)
+  }
+
+
 
 
   /*this.reset = () => {

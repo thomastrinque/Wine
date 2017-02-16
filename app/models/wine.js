@@ -6,10 +6,8 @@ class Wine {
     this.name = json.name;
     this.description = json.description;
     this.picture = json.picture;
-    this.ownerId = json.owner.id;
-    this.ownerLastname = json.owner.lastname;
-    this.ownerfirstname = json.owner.firstname;
-    this.ownerEmail = json.owner.email;
+    this.owner = json.owner;
+
     
   }
 
