@@ -12,7 +12,7 @@
 		<div id="navbar" class="navbar-collapse collapse">
 			
 			<form class="navbar-form navbar-right">
-				<input type="text" class="form-control" placeholder="Search...">
+				<input type="text" class="form-control" placeholder="Search..." ng-model= "$ctrl.research">
 			</form>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a>Markets around me</a></li>
@@ -26,29 +26,30 @@
 		<div class="col-sm-3 col-md-2 sidebar">
 			<ul class="nav nav-sidebar">
 <!-- 		<li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
- -->				
-				<li ng-repeat="owner in $ctrl.owners" ng-click="$ctrl.displayOwnerWines(owner.id)" ><a> {{ owner.firstname }} {{ owner.lastname }}</a></li>
-			</ul>
+-->	
+<li ng-click="$ctrl.displayOwnerWines()"><a>Tous les owners</a></li>			
+<li ng-repeat="owner in $ctrl.owners" ng-click="$ctrl.displayOwnerWines(owner.id)" ><a> {{ owner.firstname }} {{ owner.lastname }}</a></li>
+</ul>
 
-		</div>
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			<h1 class="page-header"></h1>
+</div>
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	<h1 class="page-header"></h1>
 
-			<div class="row placeholders">
+	<div class="row placeholders">
 
-				<div class="row">
-					<div class="col-xs-6 col-sm-3" ng-repeat="wine in $ctrl.wines">
-						<div class="thumbnail">
-							<img src={{wine.urlImg}} alt={{wine.name}}>
-							<div class="caption">
-								<h3>{{wine.name}}</h3>
-								<p>{{wine.resume}}</p>
-								<p><a href="#" class="btn btn-primary" role="button" ng-click="modale({{wine.id}})">En savoir plus</a></p>
-							</div>
-						</div>
+		<div class="row">
+			<div class="col-xs-6 col-sm-3" ng-repeat="wine in $ctrl.wines | filter: $ctrl.search()" >
+				<div class="thumbnail">
+					<img src={{wine.urlImg}} alt={{wine.name}}>
+					<div class="caption">
+						<h3>{{wine.name}}</h3>
+						<p>{{wine.resume}}</p>
+						<p><a href="#" class="btn btn-primary" role="button" ng-click="$ctrl.modale(wine.id)">En savoir plus</a></p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
+</div>
 </div>

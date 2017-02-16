@@ -21,8 +21,17 @@ angular.module("allLists").controller("allListsController", ["$http", "$scope", 
 
 
   this.displayOwnerWines = (id) => {
-    console.log(id);
+    this.searchOwner = id;
+    this.research = "";
+  }
 
+  this.search = () => {
+    if ((this.research === undefined) || (this.research === "")) {
+      return this.searchOwner;
+    }
+    else {
+      return this.research;
+    }
   }
 
 
