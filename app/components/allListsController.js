@@ -26,8 +26,6 @@ angular.module("allLists").controller("allListsController", ["$http", "$scope", 
   })
 
 
-  
-
   this.monClick = ()=>{
     console.log(this.wines)
   }
