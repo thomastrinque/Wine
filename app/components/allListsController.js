@@ -10,16 +10,19 @@ angular.module("allLists").controller("allListsController", ["$http", "$scope", 
   $http.get("http://wine.wildcodeschool.fr/api/v1/wines").then((response) => {
     WinesCollection = new Wines(response.data)
     this.wines = WinesCollection;
+    console.log("c'est ok");
   })
 
   $http.get("http://wine.wildcodeschool.fr/api/v1/owners").then((response) => {
     OwnersCollection = new Owners(response.data)
     this.owners = OwnersCollection;
+    console.log("c'est ok");
   })
 
   $http.get("http://wine.wildcodeschool.fr/api/v1/markets").then((response) => {
     MarketsCollection = new Markets(response.data)
     this.markets = MarketsCollection;
+    console.log("c'est ok");
   })
 
 
