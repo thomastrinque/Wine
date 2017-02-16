@@ -1,0 +1,67 @@
+<div id="toolbar" class="col-2">
+  <h3>Toolbar</h3>
+  <label for="address-filter">Filtrer : </label>
+  <input id="address-filter" ng-model="$ctrl.search" />
+
+  <label>Sort by:</label>
+  <select ng-model="$ctrl.orderProp">
+    <option value="firstname">Alphabetical</option>
+    <option value="age">Youngest</option>
+  </select>
+
+  <h2>Ajout étudiant</h2>
+  <form id="add-student" name="studentForm">
+    <label for="firstname">Prénom : {{studentForm.firstname.$valid}} </label>
+    <input id="firstname" name="firstname" ng-required="true" ng-model="$ctrl.student.firstname" ng-pattern="/^\b([A-Z]|[a-z]){1}([a-z]|-|é|à|ç|è){1,49}$/" />
+
+    <label for="lastname">Nom : {{studentForm.lastname.$valid}} </label>
+    <input id="lastname" name="lastname" ng-required="true" ng-model="$ctrl.student.lastname" ng-pattern="/^\b([A-Z]|[a-z]){1}([a-z]|-|é|à|ç|è){1,49}$/" />
+
+    <label for="age">Age : {{studentForm.age.$valid}} </label>
+    <input id="age" type="number" name="age" ng-required="true" ng-model="$ctrl.student.age" ng-pattern="/^\d{1,3}$/"/>
+
+    <label for="address">Adresse : {{studentForm.address.$valid}} </label>
+    <input id="address" name="address" ng-required="true" ng-model="$ctrl.student.address" ng-pattern="/^[0-9]{1,5}\s([a-z]|[A-Z]|-|\s|é|è|ê|â|ç){1,},\s[0-9]{5}\s\b([A-Z]|[a-z])([A-Z]|[a-z]|-){1,}$/" />
+
+
+    <label for="gender">Genre :</label>
+    <select ng-model="$ctrl.student.gender">
+      <option value="F">Femme</option>
+      <option value="M">Homme</option>
+    </select>
+    <button class="btn-danger" id="clear" ng-click="$ctrl.reset()">Vider</button>
+
+    <input type="submit" class="btn" id="send-form" ng-click="$ctrl.add()" ng-disabled="studentForm.$invalid"  />
+
+  </form>
+</div>
+<div class="col-10">
+  <h3>Liste étudiants</h3>
+
+  <table id="students">
+    <thead>
+      <tr>
+        <!-- sorted by name by default -->
+        <th data-sort="lastname">Nom</th>
+        <th data-sort="firstname">Prénom</th>
+        <th data-sort="age">Age</th>
+        <th data-sort="gender">Genre</th>
+        <th data-sort="address">Adresse</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="student in $ctrl.students | filter: $ctrl.search | orderBy: $ctrl.orderProp" class="student-list-item">
+        <td>{{student.lastname}}</td>
+        <td>{{student.firstname}}</td>
+        <td>{{student.age}}</td>
+        <td>{{student.gender}}</td>
+        <td>{{student.address}}</td>
+        <td>
+          <button class="btn-primary delete-student" ng-click="$ctrl.edit(student.id)">Edit</button>
+          <button class="btn-danger delete-student" ng-click="$ctrl.delet(student.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,41 @@
+!<!DOCTYPE html>
+<html lang="fr" ng-app="studentApp">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="/vendor/tacit-0.6.1.min.css" />
+	<link rel="stylesheet" href="/stylesheets/base.css" />
+	<title>Liste apprenants</title>
+</head>
+<body>
+
+	<student-averages 
+	average="average" 
+	percent-men="percentMen"
+	percent-women="percentWomen"
+	longest="longest">
+</student-averages>
+
+<student-list
+average="average" 
+percent-men="percentMen"
+percent-women="percentWomen"
+longest="longest"></student-list>
+
+
+<script src="/node_modules/angular/angular.js"></script>
+<script src="/node_modules/angular-animate/angular-animate.js"></script>
+<!-- App models -->
+<script type="text/javascript" src="/app/models/student.js"></script>
+<script type="text/javascript" src="/app/collections/students.js"></script>
+
+
+
+<!-- angular -->
+<script src="/app/studentApp.js"></script>
+<script src="/app/components/studentList/studentListModule.js"></script>
+<script src="/app/components/studentList/studentListController.js"></script>
+<script src="/app/components/studentList/studentListComponent.js"></script>
+<script src="/app/components/studentList/studentAveragesComponent.js"></script>
+</body>
+</html>
+
