@@ -7,7 +7,8 @@ class Wine {
     this.description = json.description;
     this.picture = json.picture;
     this.owner = json.owner;
-
+    this.urlImg = "http://wine.wildcodeschool.fr/" + this.picture;
+    this.resume = this.description.substr(0,40);
     
   }
 

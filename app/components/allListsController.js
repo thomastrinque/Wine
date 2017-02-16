@@ -19,8 +19,10 @@ angular.module("allLists").controller("allListsController", ["$http", "$scope", 
   })
 
 
+
   this.displayOwnerWines = (id) => {
     console.log(id);
+
   }
 
 
