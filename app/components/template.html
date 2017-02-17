@@ -48,7 +48,9 @@
 	<div class="row placeholders">
 
 		<div class="row">
-			<div class="col-xs-6 col-sm-3"  ng-repeat="wine in $ctrl.wines | filter: $ctrl.search()" >
+
+
+			<div class="col-xs-6 col-sm-3 productlist" ng-repeat="wine in $ctrl.wines | filter: $ctrl.search()" >
 				<div class="thumbnail">
 					<img src={{wine.urlImg}} alt={{wine.name}}>
 					<div class="caption">
@@ -65,9 +67,9 @@
 <div ng-hide="!$ctrl.viewshop" class="col-xs-10 col-sm-offset-2 main">
 	<div id="mapLarge"></div>
 
-
-
 </div>
 
 </div>
+
 </div>
+

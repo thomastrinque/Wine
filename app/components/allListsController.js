@@ -120,6 +120,7 @@ angular.module("allLists").controller("allListsController", ["$http", "$scope", 
 
 
   this.displayMap = () => {
+
     this.map = L.map('mapLarge').setView([44.834554, -0.572493], 13);
 
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
@@ -128,6 +129,7 @@ angular.module("allLists").controller("allListsController", ["$http", "$scope", 
      id: 'mapbox.streets',
      accessToken: 'pk.eyJ1IjoicGF2aWx1ZiIsImEiOiJjaXo4bngzZWUwMDF4MzJueHptM2dreGk0In0.FR5n0QVBYV9_5jbpxq2TJA'
    }).addTo(this.map);
+
 
 
 
