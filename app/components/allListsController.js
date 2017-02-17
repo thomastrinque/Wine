@@ -25,6 +25,8 @@ angular.module("allLists").controller("allListsController", ["$http", "$scope", 
     this.research = "";
   }
 
+  this.affichage = "owner";
+
   this.viewerowner = () => {
     if(this.affichage === "owner") {
       return true;
