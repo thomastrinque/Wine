@@ -6,6 +6,10 @@ angular.module("allLists").controller("allListsController", ["$http", "$scope", 
   $http.get("http://wine.wildcodeschool.fr/api/v1/wines").then((response) => {
     WinesCollection = new Wines(response.data)
     this.wines = WinesCollection.data;
+
+    //console.log(this.wines.indexOf("58a44795b1b1ba0b5975df56"));
+
+    //console.log(this.wines.map((e) => { return e.id; }).indexOf('58a44795b1b1ba0b5975df56'));
   })
 
   $http.get("http://wine.wildcodeschool.fr/api/v1/owners").then((response) => {
@@ -18,23 +22,77 @@ angular.module("allLists").controller("allListsController", ["$http", "$scope", 
     this.markets = MarketsCollection.data;
 
     setTimeout(() => {
-    	let i = 0;
+
+    	
+    	//let productsByMarkets = {};
+    	this.markers = {};
     	this.markets.forEach( (element) => {
-    		let latLon = element.position.split(', ')   		
+    		let latLon = element.position.split(', ');
 
-						L.marker([ latLon[0], latLon[1] ]).addTo(this.map)
-					.bindPopup("<b>Hello world!</b><br />Market bla.");
-
+    		let productsByMarkets = [];
+				let i = 0;
+    		element.products.forEach( (productId) => {
+    			// if(productsByMarkets[element.id] == undefined) {
+    			// 	productsByMarkets[element.id] = {};
+    			// }
+    			
+    			productsByMarkets.push(this.wines[this.wines.map((e) => { return e.id; }).indexOf(productId._id)].name);
 					i++;
+    		});
+
+    		//let prods = "";
+
+    		//console.log(productsByMarkets);
+
+
+    		// for(let j = 0; j < productsByMarkets[element.id].length; i++) {
+    		// 	prods += productsByMarkets[element.id][j] + "<br>";
+    		// }
+
+    		let popupContent = "";
+    		
+					if(productsByMarkets.length === 0) {
+						 popupContent = "<strong>" + element.name + '</strong><br><br><em style="text-decoration:underline;">Wines</em><br>- No wines';		
+    			}
+    			else {
+    				popupContent = "<strong>" + element.name + '</strong><br><br><em style="text-decoration:underline;">Wines</em><br>- ' + productsByMarkets.join('<br>- ');	
+    			}
+
+    		
+
+    		//this.markers[this.markets.id]
+					let test =	L.marker([ latLon[0], latLon[1] ]).addTo(this.map)
+					.bindPopup(popupContent);
+
+
+
+					this.markers[element.id] = test;
+    		   	
+    		
+
+					
+					//console.log(this.markers);
+
+					
     			
     	});
+
+
+    	//console.log(productsByMarkets);
+
     }, 4000);
+
+    this.popupMap = (id) => {
+    		//console.log(this.markers);
+				this.markers[id].openPopup();
+
+				   $(".active").removeClass("active");
+   				$("#" + id).addClass("active");
+			}
   })
 
 
-this.popup = (id) => {
 
-}
 
 
 
@@ -84,6 +142,19 @@ this.popup = (id) => {
     }
   }
 
+
+
+      function markerFunction(id){
+        for (var i in markers){
+            var markerID = markers[i].options.title;
+            if (markerID == id){
+                markers[i].openPopup();
+            };
+        }
+    }
+
+
+   
 
 
 
