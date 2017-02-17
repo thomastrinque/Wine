@@ -27,8 +27,15 @@
 			<ul class="nav nav-sidebar">
 <!-- 		<li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
 -->	
-<li ng-click="$ctrl.displayOwnerWines()"><a>Tous les owners</a></li>			
-<li ng-repeat="owner in $ctrl.owners" ng-click="$ctrl.displayOwnerWines(owner.id)" ><a> {{ owner.firstname }} {{ owner.lastname }}</a></li>
+
+<select name="affichage" id="affichage" ng-model="$ctrl.affichage">
+	<option value="owner">By Owner</option>
+	<option value="shops">By Shops</option>
+</select>
+<li ng-click="$ctrl.displayOwnerWines()" ng-if="$ctrl.viewerowner()"><a>Tous les owners</a></li>			
+<li ng-if="$ctrl.viewerowner()" ng-repeat="owner in $ctrl.owners" ng-click="$ctrl.displayOwnerWines(owner.id)" ><a> {{ owner.firstname }} {{ owner.lastname }}</a></li>
+
+<li ng-if="$ctrl.viewershop()" ng-repeat="market in $ctrl.markets" ng-click="$ctrl.displayOwnerWines(owner.id)" ><a> {{ market.name }}</a></li>
 </ul>
 
 </div>
@@ -38,7 +45,7 @@
 	<div class="row placeholders">
 
 		<div class="row">
-			<div class="col-xs-6 col-sm-3" ng-repeat="wine in $ctrl.wines | filter: $ctrl.search()" >
+			<div class="col-xs-6 col-sm-3" ng-if="$ctrl.viewerowner()" ng-repeat="wine in $ctrl.wines | filter: $ctrl.search()" >
 				<div class="thumbnail">
 					<img src={{wine.urlImg}} alt={{wine.name}}>
 					<div class="caption">
