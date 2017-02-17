@@ -26,28 +26,29 @@
  -->
 
 
-<select name="affichage" id="affichage" ng-model="$ctrl.affichage">
+<select name="affichage" id="affichage" ng-model="$ctrl.affichage" ng-change="$ctrl.viewerowner()">
 	<option value="owner">By Owner</option>
 	<option value="shops">By Shops</option>
 </select>
 
 
-<li class="owners active" id="allOwners" ng-if="$ctrl.viewerowner()" ng-click="$ctrl.displayOwnerWines('', 'allOwners')"><a>All owners</a></li>			
-<li ng-if="$ctrl.viewerowner()" class="owners" id="{{ owner.id }}" ng-repeat="owner in $ctrl.owners" ng-click="$ctrl.displayOwnerWines(owner.id, owner.id)" ><a> {{ owner.firstname }} {{ owner.lastname }}</a></li>
+<li class="owners active" id="allOwners" ng-if="!$ctrl.viewshop" ng-click="$ctrl.displayOwnerWines('', 'allOwners')"><a>All owners</a></li>	
 
-<li ng-if="$ctrl.viewershop()" ng-repeat="market in $ctrl.markets" ng-click="$ctrl.popupMap(market.id)" ><a> {{ market.name }}</a></li>
+<li ng-if="!$ctrl.viewshop" class="owners" id="{{ owner.id }}" ng-repeat="owner in $ctrl.owners" ng-click="$ctrl.popup(owner.id)" ><a> {{ owner.firstname }} {{ owner.lastname }}</a></li>
+
+<li ng-if="$ctrl.viewshop" ng-repeat="market in $ctrl.markets" ng-click="$ctrl.popupMap(market.id)" ><a> {{ market.name }}</a></li>
 
 
 </ul>
 
 </div>
-<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<div ng-hide="$ctrl.viewshop" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	<h1 class="page-header"></h1>
 
 	<div class="row placeholders">
 
 		<div class="row">
-			<div class="col-xs-6 col-sm-3" ng-if="$ctrl.viewerowner()" ng-repeat="wine in $ctrl.wines | filter: $ctrl.search()" >
+			<div class="col-xs-6 col-sm-3"  ng-repeat="wine in $ctrl.wines | filter: $ctrl.search()" >
 				<div class="thumbnail">
 					<img src={{wine.urlImg}} alt={{wine.name}}>
 					<div class="caption">
@@ -60,5 +61,13 @@
 		</div>
 	</div>
 </div>
+
+<div ng-hide="!$ctrl.viewshop" class="col-xs-10 col-sm-offset-2 main">
+	<div id="mapLarge"></div>
+
+
+
+</div>
+
 </div>
 </div>
