@@ -3,8 +3,33 @@
  */
 
  /* Move down content because we have a fixed navbar that is 50px tall */
- body {
+
+ @font-face {
+  font-family: "admiration";
+  src: url("../motionpicture.ttf");
+}
+
+body {
   padding-top: 50px;
+}
+
+.page-header {
+  font-family: admiration;
+  text-align: center;
+  color: #9a0f4a;
+  font-size: 5em;
+}
+
+#searchtitle {
+  font-family: admiration;
+  text-align: center;
+  color: #9a0f4a;
+  font-size: 2.5em;
+}
+
+.navbar-brand {
+  margin-top: -20px;
+  margin-left: 50px;
 }
 
 .thumbnail > img {
@@ -12,6 +37,113 @@
   width: 100px;
 }
 
+.navbar-top {
+  margin-top: -70px;
+  max-height: 30px;
+}
+
+.liens {
+  margin-top: 13px;
+  margin-left: 70px;
+  color: grey;
+  
+
+}
+
+.thumbnail img {
+  width: 100px;
+  height: 250px;
+}
+
+.thumbnail img {
+  width: 120px;
+  height: 270px;
+}
+
+.productlist {
+  -webkit-transition: 1s;
+}
+
+.productlist.ng-enter {
+  opacity: 0;
+}
+
+.productlist.ng-leave {
+  opacity: 1;
+}
+
+.productlist.ng-enter.ng-enter-active {
+  opacity: 1;
+}
+
+.productlist.ng-leave.ng-leave-active {
+  opacity: 0;
+}
+
+#menu {
+  height: 50px;
+  width: 100%;
+  background-color: white;
+  position: fixed;
+  top:70px;
+  z-index: 2000;
+
+}
+
+.liens a {
+  color: white ;
+}
+
+.nav-sidebar {
+  text-align: center;
+}
+
+
+
+#test {
+  background:  transparent url(http://vin.vitiplace.com/img/bg_header.png)  repeat ;
+
+}
+
+.nav-sidebar li {
+
+  color: white;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  box-shadow: 0 2px 2px -1px rgba(175, 175, 175, 1);
+  
+
+}
+
+.nav-sidebar li:hover {
+
+  background-color: #E2DACD;
+
+  text-decoration: none;
+  list-style: none;
+}
+
+.placeholders, .main, #conteneur, #container-fluid {
+  background-color: #F2F0EA;
+}
+
+#conteneur {
+  margin-top: -20px;
+}
+.nav-sidebar li a {
+  text-decoration: none;
+  color:#451c2a;
+  padding-top: 15px;
+  padding-bottom: 15px;
+
+}
+
+.nav-sidebar li a:hover {
+
+  box-shadow: 0 0px 0px 0px rgba(239, 216, 7, 1);
+  color: #9a0f4a;
+  background-color: #E2DACD;
+}
 /*
  * Global add-ons
  */
@@ -21,13 +153,30 @@
   border-bottom: 1px solid #eee;
 }
 
+#divtest {
+  margin-left: 40%;
+  
+  margin-bottom: 50px;
+}
+
+
+#conteneur {
+  padding-top: 15px;
+
+
+}
+#navbar {
+
+}
+
+
 /*
  * Top navigation
  * Hide default border to remove 1px line.
  */
  .navbar-fixed-top {
-  border: 0;
-}
+
+ }
 
 /*
  * Sidebar
@@ -70,6 +219,28 @@
   background-color: #428bca;
 }
 
+.btn-primary {
+  background-color:   #8F1119;
+  border-color: #6D071A;
+
+}
+
+.btn-primary:hover {
+  background-color: #D90115;
+  border-color: #D90115;
+}
+
+#affichageSelect {
+  margin-bottom: 20px;
+}
+
+.form-control {
+
+  width: 200px;
+  float: right;
+  margin-top: 20px;
+  margin-left: -200px;
+}
 
 /*
  * Main content

@@ -1,39 +1,39 @@
 <nav class="navbar navbar-top navbar-toggleable-md navbar-light bg-faded" id="menu">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<a class="navbar-brand" href="#"><img src="../logodark.png" height="50"></a>
-		</div>
-		<div id="navbar" class="navbar-collapse collapse">
-			
-			<div class="navbar-nav liens">
+
+	<a class="navbar-brand" href="#"><img src="../logodark.png" height="50"></a>
+	<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+		<div class="navbar-nav liens">
 			Find the wine you need thanks to WineSeeker and discover where to buy it! Easy and fast !
 			
-			</div>
 		</div>
 	</div>
 </nav>
 
-
 <div class="container-fluid">
 
 	<div class="row" id="conteneur">
-<div class="col-sm-3 col-md-2 sidebar" id="test">
+
+
+
+		<div class="col-sm-3 col-md-2 sidebar" id="test">
 			<ul class="nav nav-sidebar">
 <!-- 		<li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
- -->
-
-
+<<<<<<< HEAD
+-->	
 <p id="searchTitle">Search By : </p>
 
-<select name="affichage" id="affichage" ng-model="$ctrl.affichage" ng-change="$ctrl.viewerowner()">
+<select name="affichage" id="affichageSelect" ng-model="$ctrl.affichage" class="selectpicker" >
 	<option value="owner">Owners</option>
 	<option value="shops">Shops</option>
 </select>
 
 
+<li ng-click="$ctrl.displayOwnerWines()" ng-if="$ctrl.viewerowner()"><a>All Owners</a></li>			
+<li ng-if="$ctrl.viewerowner()" ng-repeat="owner in $ctrl.owners" ng-click="$ctrl.displayOwnerWines(owner.id)" ><a> {{ owner.firstname }} {{ owner.lastname }}</a></li>
+
 <li class="owners active" id="allOwners" ng-if="!$ctrl.viewshop" ng-click="$ctrl.displayOwnerWines('', 'allOwners')"><a>All owners</a></li>	
 
-<li ng-if="!$ctrl.viewshop" class="owners" id="{{ owner.id }}" ng-repeat="owner in $ctrl.owners" ng-click="$ctrl.displayOwnerWines(owner.id, owner.id)" ><a> {{ owner.firstname }} {{ owner.lastname }}</a></li>
+<li ng-if="!$ctrl.viewshop" class="owners" id="{{ owner.id }}" ng-repeat="owner in $ctrl.owners" ng-click="$ctrl.displayOwnerWines(owner.id)" ><a> {{ owner.firstname }} {{ owner.lastname }}</a></li>
 
 <li ng-if="$ctrl.viewshop" class="markets" id="{{ market.id }}" ng-repeat="market in $ctrl.markets" ng-click="$ctrl.popupMap(market.id)" ><a> {{ market.name }}</a></li>
 
@@ -41,15 +41,17 @@
 </ul>
 
 </div>
-<div ng-hide="$ctrl.viewshop" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	<input type="text" class="form-control" placeholder="Search..." ng-model= "$ctrl.research">
 	<h1 class="page-header">Our Wines Selection</h1>
-
+	
 	<div class="row placeholders">
 
 		<div class="row">
-			<div class="col-xs-6 col-sm-3"  ng-repeat="wine in $ctrl.wines | filter: $ctrl.search()" >
-				<div class="thumbnail">
+
+			<div class="col-xs-6 col-sm-3"  ng-if="$ctrl.viewerowner()" ng-repeat="wine in $ctrl.wines | filter: $ctrl.search()" >
+				<div class="thumbnail productlist">
 					<img src={{wine.urlImg}} alt={{wine.name}}>
 					<div class="caption">
 						<h3>{{wine.name}}</h3>
@@ -69,5 +71,4 @@
 
 </div>
 
-</div>
 </div>

@@ -40,6 +40,7 @@ angular.module("allLists").controller("allListsController", ["$http", "$scope", 
 					i++;
     		});
 
+//<<<<<<< HEAD
     		//let prods = "";
 
     		//console.log(productsByMarkets);
@@ -80,6 +81,14 @@ angular.module("allLists").controller("allListsController", ["$http", "$scope", 
 
     	//console.log(productsByMarkets);
 
+// =======
+//         L.marker([ latLon[0], latLon[1] ]).addTo(this.map)
+//         .bindPopup("<b>Hello world!</b><br />Market bla.");
+
+//         i++;
+        
+//       });
+// >>>>>>> dev
     }, 4000);
 
     this.popupMap = (id) => {
@@ -92,27 +101,33 @@ angular.module("allLists").controller("allListsController", ["$http", "$scope", 
   })
 
 
+// <<<<<<< HEAD
+
+// =======
+//   this.popup = (id) => {
+
+//   }
+// >>>>>>> dev
 
 
 
-
-  this.displayOwnerWines = (id, cssId) => {
+  this.displayOwnerWines = (id, cssId='') => {
     this.searchOwner = id;
     this.research = "";
-   	$(".active").removeClass("active");
-   	$("#" + cssId).addClass("active");
+    $(".active").removeClass("active");
+    $("#" + cssId).addClass("active");
   }
 
 
-	this.displayMap = () => {
-		this.map = L.map('mapLarge').setView([44.834554, -0.572493], 13);
+  this.displayMap = () => {
+    this.map = L.map('mapLarge').setView([44.834554, -0.572493], 13);
 
-		L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-	  attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-	  maxZoom: 18,
-	  id: 'mapbox.streets',
-	  accessToken: 'pk.eyJ1IjoicGF2aWx1ZiIsImEiOiJjaXo4bngzZWUwMDF4MzJueHptM2dreGk0In0.FR5n0QVBYV9_5jbpxq2TJA'
-	}).addTo(this.map);
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+     maxZoom: 18,
+     id: 'mapbox.streets',
+     accessToken: 'pk.eyJ1IjoicGF2aWx1ZiIsImEiOiJjaXo4bngzZWUwMDF4MzJueHptM2dreGk0In0.FR5n0QVBYV9_5jbpxq2TJA'
+   }).addTo(this.map);
 
 
 
@@ -124,6 +139,7 @@ angular.module("allLists").controller("allListsController", ["$http", "$scope", 
 
 	this.viewshop = false;
 	this.affichage = 'owner';
+
 
   this.viewerowner = () => {
     if(this.affichage === 'shops') {
