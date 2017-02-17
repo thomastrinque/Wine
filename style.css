@@ -282,3 +282,7 @@ body {
 .nav-sidebar li {
 	cursor: pointer;
 }
+
+#mapLarge { 
+	width: 80%;height: 600px; 
+}

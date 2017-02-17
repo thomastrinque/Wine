@@ -16,29 +16,63 @@ angular.module("allLists").controller("allListsController", ["$http", "$scope", 
   $http.get("http://wine.wildcodeschool.fr/api/v1/markets").then((response) => {
     MarketsCollection = new Markets(response.data)
     this.markets = MarketsCollection.data;
+
+    setTimeout(() => {
+    	let i = 0;
+    	this.markets.forEach( (element) => {
+    		let latLon = element.position.split(', ')   		
+
+        L.marker([ latLon[0], latLon[1] ]).addTo(this.map)
+        .bindPopup("<b>Hello world!</b><br />Market bla.");
+
+        i++;
+        
+      });
+    }, 4000);
   })
 
 
+  this.popup = (id) => {
 
-  this.displayOwnerWines = (id) => {
+  }
+
+
+
+  this.displayOwnerWines = (id, cssId) => {
     this.searchOwner = id;
     this.research = "";
+    $(".active").removeClass("active");
+    $("#" + cssId).addClass("active");
   }
 
-  this.affichage = "owner";
+
+  this.displayMap = () => {
+    this.map = L.map('mapLarge').setView([44.834554, -0.572493], 13);
+
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+     maxZoom: 18,
+     id: 'mapbox.streets',
+     accessToken: 'pk.eyJ1IjoicGF2aWx1ZiIsImEiOiJjaXo4bngzZWUwMDF4MzJueHptM2dreGk0In0.FR5n0QVBYV9_5jbpxq2TJA'
+   }).addTo(this.map);
+
+
+
+		//L.marker([44.83457, -0.58]).addTo(map)
+		//.bindPopup("<b>Hello world!</b><br />Market bla.").openPopup();
+	}
+
+	this.displayMap();
+
+	this.viewshop = false;
+	this.affichage = 'owner';
+
 
   this.viewerowner = () => {
-    if(this.affichage === "owner") {
-      return true;
+    if(this.affichage === 'shops') {
+    	this.viewshop = true;
     } else {
-      return false;
-    }
-  }
-  this.viewershop = () => {
-    if(this.affichage === "shops") {
-      return true;
-    } else {
-      return false;
+      this.viewshop = false;
     }
   }
 

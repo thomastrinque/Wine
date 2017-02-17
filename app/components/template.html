@@ -18,6 +18,7 @@
 		<div class="col-sm-3 col-md-2 sidebar" id="test">
 			<ul class="nav nav-sidebar">
 <!-- 		<li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+<<<<<<< HEAD
 -->	
 <p id="searchTitle">Search By : </p>
 
@@ -30,18 +31,25 @@
 <li ng-click="$ctrl.displayOwnerWines()" ng-if="$ctrl.viewerowner()"><a>All Owners</a></li>			
 <li ng-if="$ctrl.viewerowner()" ng-repeat="owner in $ctrl.owners" ng-click="$ctrl.displayOwnerWines(owner.id)" ><a> {{ owner.firstname }} {{ owner.lastname }}</a></li>
 
-<li ng-if="$ctrl.viewershop()" ng-repeat="market in $ctrl.markets" ng-click="$ctrl.displayOwnerWines(owner.id)" ><a> {{ market.name }}</a></li>
+<li class="owners active" id="allOwners" ng-if="!$ctrl.viewshop" ng-click="$ctrl.displayOwnerWines('', 'allOwners')"><a>All owners</a></li>	
+
+<li ng-if="!$ctrl.viewshop" class="owners" id="{{ owner.id }}" ng-repeat="owner in $ctrl.owners" ng-click="$ctrl.popup(owner.id)" ><a> {{ owner.firstname }} {{ owner.lastname }}</a></li>
+
+<li ng-if="$ctrl.viewshop" ng-repeat="market in $ctrl.markets" ng-click="$ctrl.popupMap(market.id)" ><a> {{ market.name }}</a></li>
+
+
 </ul>
 
 </div>
+
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	<input type="text" class="form-control" placeholder="Search..." ng-model= "$ctrl.research">
 	<h1 class="page-header">Our Wines Selection</h1>
 	
-
 	<div class="row placeholders">
 
 		<div class="row">
+
 			<div class="col-xs-6 col-sm-3"  ng-if="$ctrl.viewerowner()" ng-repeat="wine in $ctrl.wines | filter: $ctrl.search()" >
 				<div class="thumbnail productlist">
 					<img src={{wine.urlImg}} alt={{wine.name}}>
@@ -55,4 +63,12 @@
 		</div>
 	</div>
 </div>
+
+<div ng-hide="!$ctrl.viewshop" class="col-xs-10 col-sm-offset-2 main">
+	<div id="mapLarge"></div>
+
+
+
+</div>
+
 </div>
