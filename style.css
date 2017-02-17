@@ -141,9 +141,8 @@ body {
   padding-bottom: 15px;
 
 }
-.nav-sidebar > .active > a,
-.nav-sidebar > .active > a:hover,
-.nav-sidebar > .active > a:focus {
+.nav-sidebar > .active > a
+{
   color:#bc364a;
   background-color: #615b54;
   background: linear-gradient( #d1c6a9, #d1c6a9);
@@ -234,6 +233,11 @@ body {
 }
 
 .btn-primary:hover {
+  background-color: #D90115;
+  border-color: #D90115;
+}
+
+.btn-primary:focus {
   background-color: #D90115;
   border-color: #D90115;
 }

@@ -30,15 +30,15 @@ angular.module("allLists").controller("allListsController", ["$http", "$scope", 
     		let latLon = element.position.split(', ');
 
     		let productsByMarkets = [];
-				let i = 0;
-    		element.products.forEach( (productId) => {
+        let i = 0;
+        element.products.forEach( (productId) => {
     			// if(productsByMarkets[element.id] == undefined) {
     			// 	productsByMarkets[element.id] = {};
     			// }
     			
     			productsByMarkets.push(this.wines[this.wines.map((e) => { return e.id; }).indexOf(productId._id)].name);
-					i++;
-    		});
+         i++;
+       });
 
 //<<<<<<< HEAD
     		//let prods = "";
@@ -52,31 +52,31 @@ angular.module("allLists").controller("allListsController", ["$http", "$scope", 
 
     		let popupContent = "";
     		
-					if(productsByMarkets.length === 0) {
-						 popupContent = "<strong>" + element.name + '</strong><br><br><em style="text-decoration:underline;">Wines</em><br>- No wines';		
-    			}
-    			else {
-    				popupContent = "<strong>" + element.name + '</strong><br><br><em style="text-decoration:underline;">Wines</em><br>- ' + productsByMarkets.join('<br>- ');	
-    			}
+       if(productsByMarkets.length === 0) {
+         popupContent = "<strong>" + element.name + '</strong><br><br><em style="text-decoration:underline;">Wines</em><br>- No wines';		
+       }
+       else {
+        popupContent = "<strong>" + element.name + '</strong><br><br><em style="text-decoration:underline;">Wines</em><br>- ' + productsByMarkets.join('<br>- ');	
+      }
 
-    		
+
 
     		//this.markers[this.markets.id]
-					let test =	L.marker([ latLon[0], latLon[1] ]).addTo(this.map)
-					.bindPopup(popupContent);
+       let test =	L.marker([ latLon[0], latLon[1] ]).addTo(this.map)
+       .bindPopup(popupContent);
 
 
 
-					this.markers[element.id] = test;
-    		   	
-    		
+       this.markers[element.id] = test;
 
-					
+
+
+
 					//console.log(this.markers);
 
 					
-    			
-    	});
+
+       });
 
 
     	//console.log(productsByMarkets);
@@ -86,19 +86,21 @@ angular.module("allLists").controller("allListsController", ["$http", "$scope", 
 //         .bindPopup("<b>Hello world!</b><br />Market bla.");
 
 //         i++;
-        
+
 //       });
 // >>>>>>> dev
-    }, 4000);
+}, 4000);
 
-    this.popupMap = (id) => {
+
+
+this.popupMap = (id) => {
     		//console.log(this.markers);
-				this.markers[id].openPopup();
+        this.markers[id].openPopup();
 
-				   $(".active").removeClass("active");
-   				$("#" + id).addClass("active");
-			}
-  })
+        $(".active").removeClass("active");
+        $("#" + id).addClass("active");
+      }
+    })
 
 
 // <<<<<<< HEAD
@@ -111,24 +113,25 @@ angular.module("allLists").controller("allListsController", ["$http", "$scope", 
 
 
 
-  this.displayOwnerWines = (id, cssId='') => {
-    this.searchOwner = id;
-    this.research = "";
-    $(".active").removeClass("active");
-    $("#" + cssId).addClass("active");
-  }
+this.displayOwnerWines = (id, cssId='') => {
+  this.searchOwner = id;
+  this.research = "";
+  $(".active").removeClass("active");
+  $("#" + cssId).addClass("active");
+}
 
 
-  this.displayMap = () => {
 
-    this.map = L.map('mapLarge').setView([44.834554, -0.572493], 13);
+this.displayMap = () => {
 
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-     maxZoom: 18,
-     id: 'mapbox.streets',
-     accessToken: 'pk.eyJ1IjoicGF2aWx1ZiIsImEiOiJjaXo4bngzZWUwMDF4MzJueHptM2dreGk0In0.FR5n0QVBYV9_5jbpxq2TJA'
-   }).addTo(this.map);
+  this.map = L.map('mapLarge').setView([44.834554, -0.572493], 13);
+
+  L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+   attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+   maxZoom: 18,
+   id: 'mapbox.streets',
+   accessToken: 'pk.eyJ1IjoicGF2aWx1ZiIsImEiOiJjaXo4bngzZWUwMDF4MzJueHptM2dreGk0In0.FR5n0QVBYV9_5jbpxq2TJA'
+ }).addTo(this.map);
 
 
 
@@ -162,17 +165,19 @@ angular.module("allLists").controller("allListsController", ["$http", "$scope", 
 
 
 
-      function markerFunction(id){
-        for (var i in markers){
-            var markerID = markers[i].options.title;
-            if (markerID == id){
-                markers[i].openPopup();
-            };
-        }
+  function markerFunction(id){
+    for (var i in markers){
+      var markerID = markers[i].options.title;
+      if (markerID == id){
+        markers[i].openPopup();
+      };
     }
+  }
+  this.actualise = () => {
+    this.affichage === "owner";
+  }
 
 
-   
 
 
 

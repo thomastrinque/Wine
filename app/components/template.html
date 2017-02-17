@@ -1,13 +1,13 @@
 <nav class="navbar navbar-top navbar-toggleable-md navbar-light bg-faded" id="menu">
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="#"><img src="../logodark.png" height="50"></a>
+			<a class="navbar-brand"  href="#"><img src="../logodark.png" height="50" ng-click="$ctrl.actualise()"></a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			
 			<div class="navbar-nav liens">
 				Find the wine you need thanks to WineSeeker and discover where to buy it! Easy and fast !
-				
+
 			</div>
 		</div>
 	</div>
@@ -19,55 +19,55 @@
 	<div class="row" id="conteneur">
 		<div class="col-sm-3 col-md-2 sidebar" id="test">
 			<ul class="nav nav-sidebar">
-<!-- 		<li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
--->
+				<!-- 		<li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+			-->
 
 
-<p id="searchTitle">Search By : </p>
+			<p id="searchTitle">Search By : </p>
 
-<select name="affichage" id="affichage" ng-model="$ctrl.affichage" ng-change="$ctrl.viewerowner()">
-	<option value="owner">Owners</option>
-	<option value="shops">Shops</option>
-</select>
-
-
-<li class="owners active" id="allOwners" ng-if="!$ctrl.viewshop" ng-click="$ctrl.displayOwnerWines('', 'allOwners')"><a>All owners</a></li>	
-
-<li ng-if="!$ctrl.viewshop" class="owners" id="{{ owner.id }}" ng-repeat="owner in $ctrl.owners" ng-click="$ctrl.displayOwnerWines(owner.id, owner.id)" ><a> {{ owner.firstname }} {{ owner.lastname }}</a></li>
-
-<li ng-if="$ctrl.viewshop" class="markets" id="{{ market.id }}" ng-repeat="market in $ctrl.markets" ng-click="$ctrl.popupMap(market.id)" ><a> {{ market.name }}</a></li>
+			<select name="affichage" id="affichage" ng-model="$ctrl.affichage" ng-change="$ctrl.viewerowner()">
+				<option value="owner">Owners</option>
+				<option value="shops">Shops</option>
+			</select>
 
 
-</ul>
+			<li class="owners active" id="allOwners" ng-if="!$ctrl.viewshop" ng-click="$ctrl.displayOwnerWines('', 'allOwners')"><a>All owners</a></li>	
 
-</div>
-<div ng-hide="$ctrl.viewshop" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-	<input type="text" class="form-control" placeholder="Search..." ng-model= "$ctrl.research">
-	<h1 class="page-header">Our Wines Selection</h1>
+			<li ng-if="!$ctrl.viewshop" class="owners" id="{{ owner.id }}" ng-repeat="owner in $ctrl.owners" ng-click="$ctrl.displayOwnerWines(owner.id, owner.id)" ><a> {{ owner.firstname }} {{ owner.lastname }}</a></li>
 
-	<div class="row placeholders">
-
-		<div class="row">
+			<li ng-if="$ctrl.viewshop" class="markets" id="{{ market.id }}" ng-repeat="market in $ctrl.markets" ng-click="$ctrl.popupMap(market.id)" ><a> {{ market.name }}</a></li>
 
 
-			<div class="col-xs-6 col-sm-3 productlist" ng-repeat="wine in $ctrl.wines | filter: $ctrl.search()" >
-				<div class="thumbnail">
-					<img src={{wine.urlImg}} alt={{wine.name}}>
-					<div class="caption">
-						<h3>{{wine.name}}</h3>
-						<p>{{wine.resume}}</p>
-						<p><a href="#" class="btn btn-primary" role="button" ng-click="$ctrl.modale(wine.id)">En savoir plus</a></p>
+		</ul>
+
+	</div>
+	<div ng-hide="$ctrl.viewshop" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		<input type="text" class="form-control" placeholder="Search..." ng-model= "$ctrl.research">
+		<h1 class="page-header">Our Wines Selection</h1>
+
+		<div class="row placeholders">
+
+			<div class="row">
+
+
+				<div class="col-xs-6 col-sm-3 productlist" ng-repeat="wine in $ctrl.wines | filter: $ctrl.search()" >
+					<div class="thumbnail">
+						<img src={{wine.urlImg}} alt={{wine.name}}>
+						<div class="caption">
+							<h3>{{wine.name}}</h3>
+							<p>{{wine.resume}}</p>
+							<p><a href="#" class="btn btn-primary" role="button" ng-click="$ctrl.modale(wine.id)">En savoir plus</a></p>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
 
-<div ng-hide="!$ctrl.viewshop" class="col-xs-10 col-sm-offset-2 main">
-	<div id="mapLarge"></div>
+	<div ng-hide="!$ctrl.viewshop" class="col-xs-10 col-sm-offset-2 main">
+		<div id="mapLarge"></div>
 
-</div>
+	</div>
 
 </div>
 
