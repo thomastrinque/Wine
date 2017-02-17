@@ -61,7 +61,7 @@ body {
 }
 
 .productlist {
-  -webkit-transition: 1s;
+  -webkit-transition: 0.3s;
 }
 
 .productlist.ng-enter {
@@ -79,6 +79,8 @@ body {
 .productlist.ng-leave.ng-leave-active {
   opacity: 0;
 }
+
+
 
 #menu {
   height: 50px;
@@ -281,8 +283,4 @@ body {
 
 .nav-sidebar li {
 	cursor: pointer;
-}
-
-#mapLarge { 
-	width: 80%;height: 600px; 
 }

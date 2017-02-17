@@ -50,8 +50,8 @@
 
 		<div class="row">
 
-			<div class="col-xs-6 col-sm-3"  ng-if="$ctrl.viewerowner()" ng-repeat="wine in $ctrl.wines | filter: $ctrl.search()" >
-				<div class="thumbnail productlist">
+			<div class="col-xs-6 col-sm-3 productlist" ng-repeat="wine in $ctrl.wines | filter: $ctrl.search()" >
+				<div class="thumbnail">
 					<img src={{wine.urlImg}} alt={{wine.name}}>
 					<div class="caption">
 						<h3>{{wine.name}}</h3>
@@ -72,3 +72,4 @@
 </div>
 
 </div>
+
