@@ -28,6 +28,21 @@ angular.module("allLists").controller("allListsController", ["$http", "$scope", 
    	$("#" + cssId).addClass("active");
   }
 
+  this.viewerowner = () => {
+    if(this.affichage === "owner") {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  this.viewershop = () => {
+    if(this.affichage === "shops") {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   this.search = () => {
     if ((this.research === undefined) || (this.research === "")) {
       return this.searchOwner;
