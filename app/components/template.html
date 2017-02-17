@@ -14,9 +14,6 @@
 			<form class="navbar-form navbar-right">
 				<input type="text" class="form-control" placeholder="Search..." ng-model= "$ctrl.research">
 			</form>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a>Markets around me</a></li>
-			</ul>
 		</div>
 	</div>
 </nav>
@@ -26,9 +23,9 @@
 		<div class="col-sm-3 col-md-2 sidebar">
 			<ul class="nav nav-sidebar">
 <!-- 		<li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
--->	
-<li ng-click="$ctrl.displayOwnerWines()"><a>Tous les owners</a></li>			
-<li ng-repeat="owner in $ctrl.owners" ng-click="$ctrl.displayOwnerWines(owner.id)" ><a> {{ owner.firstname }} {{ owner.lastname }}</a></li>
+ -->
+<li class="owners active" id="allOwners" ng-click="$ctrl.displayOwnerWines('', 'allOwners')"><a>All owners</a></li>			
+<li class="owners" id="{{ owner.id }}" ng-repeat="owner in $ctrl.owners" ng-click="$ctrl.displayOwnerWines(owner.id, owner.id)" ><a> {{ owner.firstname }} {{ owner.lastname }}</a></li>
 </ul>
 
 </div>

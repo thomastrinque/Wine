@@ -20,9 +20,12 @@ angular.module("allLists").controller("allListsController", ["$http", "$scope", 
 
 
 
-  this.displayOwnerWines = (id) => {
+
+  this.displayOwnerWines = (id, cssId) => {
     this.searchOwner = id;
     this.research = "";
+   	$(".active").removeClass("active");
+   	$("#" + cssId).addClass("active");
   }
 
   this.search = () => {
